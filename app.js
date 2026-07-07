@@ -49,6 +49,9 @@ const translations = {
         prompt1: "How to update Aadhaar address?",
         prompt2: "What is needed for Passport?",
         prompt3: "Where to report broken street lights?",
+        prompt4: "Is my income eligible for Ayushman Bharat?",
+        prompt5: "What are the benefits of PM-KISAN?",
+        prompt6: "How to open Sukanya Samriddhi account?",
         aiResponseTitle: "AI Companion Response",
         
         // Services
@@ -79,6 +82,24 @@ const translations = {
         copyBtn: "Copy Text",
         copied: "Copied!",
         draftHint: "Note: You can copy this draft and submit it directly to your local municipal portal or CPGRAMS.",
+
+        // Schemes Explorer
+        schemesTitle: "Government Schemes Explorer",
+        matcherTitle: "Personalized Scheme Matcher",
+        lblMatchAge: "Age (Years)",
+        lblMatchGender: "Gender",
+        lblMatchProfession: "Profession",
+        lblMatchIncome: "Annual Income (₹)",
+        btnMatchSchemes: "Find Matching Schemes",
+        genderAny: "Any / Male",
+        genderFemale: "Female Only",
+        profFarmer: "Farmer (Kisan)",
+        profStudent: "Student",
+        profUnemployed: "Unemployed / Rural",
+        profBusiness: "Self-Employed / Business",
+        btnApply: "Apply Guide",
+        eligibilityLabel: "Eligibility: ",
+        benefitLabel: "Benefit: ",
 
         // Complaint Tracker
         trackerTitle: "Civic Grievance Tracker",
@@ -129,6 +150,9 @@ const translations = {
         prompt1: "आधार कार्ड का पता कैसे बदलें?",
         prompt2: "पासपोर्ट के लिए क्या चाहिए?",
         prompt3: "सड़क की बत्ती खराब होने पर कहां रिपोर्ट करें?",
+        prompt4: "क्या मेरी आय आयुष्मान भारत के लिए योग्य है?",
+        prompt5: "पीएम-किसान के क्या लाभ हैं?",
+        prompt6: "सुकन्या समृद्धि खाता कैसे खोलें?",
         aiResponseTitle: "एआई सहायक की प्रतिक्रिया",
         
         // Services
@@ -159,6 +183,24 @@ const translations = {
         copyBtn: "कॉपी करें",
         copied: "कॉपी हो गया!",
         draftHint: "नोट: आप इस ड्राफ्ट को कॉपी कर सकते हैं और इसे सीधे अपने स्थानीय नगर पालिका पोर्टल या CPGRAMS पर जमा कर सकते हैं।",
+
+        // Schemes Explorer
+        schemesTitle: "सरकारी योजना खोजक",
+        matcherTitle: "व्यक्तिगत योजना मिलानकर्ता",
+        lblMatchAge: "आयु (वर्ष)",
+        lblMatchGender: "लिंग",
+        lblMatchProfession: "पेशा",
+        lblMatchIncome: "वार्षिक आय (₹)",
+        btnMatchSchemes: "मिलान योजनाएं खोजें",
+        genderAny: "कोई भी / पुरुष",
+        genderFemale: "केवल महिला",
+        profFarmer: "किसान",
+        profStudent: "छात्र",
+        profUnemployed: "बेरोजगार / ग्रामीण",
+        profBusiness: "स्व-नियोजित / व्यवसाय",
+        btnApply: "आवेदन गाइड",
+        eligibilityLabel: "पात्रता: ",
+        benefitLabel: "लाभ: ",
 
         // Complaint Tracker
         trackerTitle: "नागरिक शिकायत ट्रैकर",
@@ -209,6 +251,9 @@ const translations = {
         prompt1: "આધાર કાર્ડમાં સરનામું કેવી રીતે બદલવું?",
         prompt2: "પાસપોર્ટ માટે શું જોઈએ?",
         prompt3: "સ્ટ્રીટ લાઈટ બંધ હોય તો ક્યાં ફરિયાદ કરવી?",
+        prompt4: "શું મારી આવક આયુષ્માન ભારત માટે પાત્ર છે?",
+        prompt5: "પીએમ-કિસાનના શું ફાયદા છે?",
+        prompt6: "સુકન્યા સમૃદ્ધિ ખાતું કેવી રીતે ખોલવું?",
         aiResponseTitle: "એઆઈ સહાયકનો પ્રતિભાવ",
         
         // Services
@@ -239,6 +284,24 @@ const translations = {
         copyBtn: "કોપી કરો",
         copied: "કોપી થઈ ગયું!",
         draftHint: "નોંધ: તમે આ ડ્રાફ્ટ કોપી કરી શકો છો અને તેને સીધા તમારા સ્થાનિક મ્યુનિસિપલ પોર્ટલ અથવા CPGRAMS પર સબમિટ કરી શકો છો.",
+
+        // Schemes Explorer
+        schemesTitle: "સરકારી યોજના શોધક",
+        matcherTitle: "વ્યક્તિગત યોજના મેળવનાર",
+        lblMatchAge: "ઉંમર (વર્ષ)",
+        lblMatchGender: "લિંગ",
+        lblMatchProfession: "વ્યવસાય",
+        lblMatchIncome: "વાર્ષિક આવક (₹)",
+        btnMatchSchemes: "બંધબેસતી યોજનાઓ શોધો",
+        genderAny: "કોઈપણ / પુરુષ",
+        genderFemale: "માત્ર મહિલાઓ",
+        profFarmer: "ખેડૂત",
+        profStudent: "વિદ્યાર્થી",
+        profUnemployed: "બેરોજગાર / ગ્રામીણ",
+        profBusiness: "સ્વ-રોજગાર / વ્યવસાય",
+        btnApply: "અરજી માર્ગદર્શિકા",
+        eligibilityLabel: "પાત્રતા: ",
+        benefitLabel: "લાભ: ",
 
         // Complaint Tracker
         trackerTitle: "નાગરિક ફરિયાદ ટ્રેકર",
@@ -360,6 +423,120 @@ const checklistData = {
         ]
     }
 };
+
+// Government Schemes Local Database
+const schemesList = [
+    {
+        id: "pmkisan",
+        name: { en: "PM-KISAN Scheme", hi: "पीएम-किसान योजना", gu: "પીએમ-કિસાન યોજના" },
+        desc: { 
+            en: "Income support scheme of ₹6,000/year for landholding farmers.",
+            hi: "भूमिधारक किसानों के लिए ₹6,000/वर्ष की आय सहायता योजना।",
+            gu: "જમીન ધરાવતા ખેડૂતો માટે વાર્ષિક ₹૬,૦૦૦ ની આર્થિક સહાય."
+        },
+        eligibility: {
+            en: "Landholding farmer families, not paying income tax.",
+            hi: "भूमिधारक किसान परिवार, जो आयकर नहीं देते हैं।",
+            gu: "જમીન ધરાવતા ખેડૂત પરિવારો, જેઓ આવકવેરો ભરતા નથી."
+        },
+        benefit: {
+            en: "₹6,000 per year in 3 equal installments directly to bank accounts.",
+            hi: "बैंक खाते में सीधे 3 समान किस्तों में ₹6,000 प्रति वर्ष।",
+            gu: "સીધા બેંક ખાતામાં વર્ષે ₹૬,૦૦૦ ના ૩ હપ્તા."
+        },
+        checkMatch: (age, gender, profession, income) => {
+            return profession === 'farmer';
+        }
+    },
+    {
+        id: "ayushman",
+        name: { en: "Ayushman Bharat (PM-JAY)", hi: "आयुष्मान भारत (PM-JAY)", gu: "આયુષ્માન ભારત (PM-JAY)" },
+        desc: {
+            en: "Free health cover for secondary and tertiary care hospitalization.",
+            hi: "माध्यमिक और तृतीयक देखभाल अस्पताल में भर्ती के लिए मुफ्त स्वास्थ्य कवर।",
+            gu: "હોસ્પિટલમાં દાખલ થવા માટે મફત તબીબી સારવાર આરોગ્ય વીમો કવચ."
+        },
+        eligibility: {
+            en: "Low income families, rural households, laborers.",
+            hi: "कम आय वाले परिवार, ग्रामीण परिवार, मजदूर।",
+            gu: "ઓછી આવક ધરાવતા પરિવારો, ગ્રામીણ પરિવારો, શ્રમિકો."
+        },
+        benefit: {
+            en: "Cashless health cover up to ₹5 Lakh per family per year.",
+            hi: "प्रति वर्ष प्रति परिवार ₹5 लाख तक का कैशलेस स्वास्थ्य कवर।",
+            gu: "કુટુંબ દીઠ વર્ષે ₹૫ લાખ સુધીની કેશલેસ મફત સારવાર."
+        },
+        checkMatch: (age, gender, profession, income) => {
+            return income <= 250000 || profession === 'unemployed';
+        }
+    },
+    {
+        id: "sukanya",
+        name: { en: "Sukanya Samriddhi Yojana (SSY)", hi: "सुकन्या समृद्धि योजना (SSY)", gu: "સુકન્યા સમૃદ્ધિ યોજના (SSY)" },
+        desc: {
+            en: "A girl child savings scheme under 'Beti Bachao Beti Padhao'.",
+            hi: "'बेटी बचाओ बेटी पढ़ाओ' के तहत एक बालिका बचत योजना।",
+            gu: "બાળકીઓના ઉજ્જવળ ભવિષ્ય માટેની ખાસ નાની બચત યોજના."
+        },
+        eligibility: {
+            en: "Girl child aged 10 years or below. Account opened by guardian.",
+            hi: "10 वर्ष या उससे कम उम्र की बालिका। अभिभावक द्वारा खोला गया खाता।",
+            gu: "૧૦ વર્ષ કે તેથી ઓછી ઉંમરની બાળકી. વાલી દ્વારા ખોલાવી શકાય."
+        },
+        benefit: {
+            en: "Higher interest rate (approx 8.2%) with tax benefits under 80C.",
+            hi: "धारा 80C के तहत कर लाभ के साथ उच्च ब्याज दर (लगभग 8.2%)।",
+            gu: "ઊંચો વ્યાજ દર (અંદાજે ૮.૨%) અને 80C હેઠળ આવકવેરા મુક્તિ."
+        },
+        checkMatch: (age, gender, profession, income) => {
+            return gender === 'female';
+        }
+    },
+    {
+        id: "jandhan",
+        name: { en: "PM Jan Dhan Yojana (PMJDY)", hi: "पीएम जन धन योजना (PMJDY)", gu: "પીએમ જન ધન યોજના (PMJDY)" },
+        desc: {
+            en: "Zero balance bank accounts with financial services access.",
+            hi: "वित्तीय सेवाओं के साथ शून्य शेष बैंक खाते।",
+            gu: "નાણાકીય સેવાઓ સાથેનું સરકારી શૂન્ય બેલેન્સ બેંક ખાતું."
+        },
+        eligibility: {
+            en: "Any citizen above 10 years without an existing savings account.",
+            hi: "बुनियादी बैंक खाते के बिना 10 वर्ष से अधिक आयु का कोई भी नागरिक।",
+            gu: "૧૦ વર્ષથી વધુ ઉંમરના બેઝિક એકાઉન્ટ ન ધરાવતા કોઈપણ નાગરિક."
+        },
+        benefit: {
+            en: "No minimum balance, RuPay debit card, and accidental cover.",
+            hi: "कोई न्यूनतम शेष राशि नहीं, रुपे डेबिट कार्ड और दुर्घटना कवर।",
+            gu: "કોઈ ન્યૂનતમ બેલેન્સની જરૂરિયાત નહિ, રૂપય ડેબિટ કીર્ડ અને અકસ્માત વીમો."
+        },
+        checkMatch: (age, gender, profession, income) => {
+            return true;
+        }
+    },
+    {
+        id: "atalpension",
+        name: { en: "Atal Pension Yojana (APY)", hi: "अटल पेंशन योजना (APY)", gu: "અટલ પેન્શન યોજના (APY)" },
+        desc: {
+            en: "Guaranteed minimum pension scheme for unorganized workers.",
+            hi: "असंगठित श्रमिकों के लिए गारंटीकृत न्यूनतम पेंशन योजना।",
+            gu: "અસંગઠિત ક્ષેત્રના શ્રમિકો માટે માસિક પેન્શન યોજના."
+        },
+        eligibility: {
+            en: "Citizens aged between 18 and 40 years.",
+            hi: "18 से 40 वर्ष के बीच की आयु के नागरिक।",
+            gu: "૧૮ થી ૪૦ વર્ષની વચ્ચેની ઉંમર ધરાવતા નાગરિકો."
+        },
+        benefit: {
+            en: "Pension of ₹1,000 to ₹5,000/month after attaining age 60.",
+            hi: "60 वर्ष की आयु प्राप्त करने के बाद ₹1,000 से ₹5,000/माह की पेंशन।",
+            gu: "૬૦ વર્ષની ઉંમર પછી દર મહિને ₹૧,૦૦એ થી ₹૫,૦૦૦ નું પેન્શન."
+        },
+        checkMatch: (age, gender, profession, income) => {
+            return age >= 18 && age <= 40 && profession !== 'student';
+        }
+    }
+];
 
 // Mock AI Engine Rule Database & Translation Outputs
 const aiKeywords = {
@@ -527,14 +704,150 @@ const aiKeywords = {
     },
     general: {
         en: `<h3>🤖 Civic Companion Ready</h3>
-             <p>Hello! I can help you find official documents, draft grievance letters, and guide you through citizen services.</p>
-             <p>Try searching for keywords like <strong>Aadhaar</strong>, <strong>Passport</strong>, <strong>CPGRAMS</strong>, <strong>PAN Card</strong>, or <strong>Ration Card</strong>. You can also click the suggested prompts above or use the tools on the page.</p>`,
+             <p>Hello! I can help you find official documents, draft grievance letters, guide you through citizen services, and match government schemes.</p>
+             <p>Try searching for keywords like <strong>Aadhaar</strong>, <strong>Passport</strong>, <strong>CPGRAMS</strong>, <strong>PAN Card</strong>, <strong>Ration Card</strong>, or schemes like <strong>Ayushman Bharat</strong>, <strong>PM-KISAN</strong>, and <strong>Sukanya Samriddhi</strong>.</p>`,
         hi: `<h3>🤖 नागरिक साथी तैयार है</h3>
-             <p>नमस्ते! मैं आपको आधिकारिक दस्तावेज़ ढूंढने, शिकायत पत्र तैयार करने और नागरिक सेवाओं में आपका मार्गदर्शन करने में मदद कर सकता हूँ।</p>
-             <p><strong>आधार (Aadhaar)</strong>, <strong>पासपोर्ट (Passport)</strong>, <strong>CPGRAMS</strong>, <strong>पैन कार्ड (PAN Card)</strong>, या <strong>राशन कार्ड (Ration Card)</strong> जैसे कीवर्ड खोजने का प्रयास करें। आप ऊपर दिए गए सुझाए गए प्रश्नों पर भी क्लिक कर सकते हैं।</p>`,
+             ? <p>नमस्ते! मैं आपको आधिकारिक दस्तावेज़ ढूंढने, शिकायत पत्र तैयार करने, नागरिक सेवाओं में आपका मार्गदर्शन करने और सरकारी योजनाओं का मिलान करने में मदद कर सकता हूँ।</p>
+             <p><strong>आधार (Aadhaar)</strong>, <strong>पासपोर्ट (Passport)</strong>, <strong>CPGRAMS</strong>, <strong>पैन कार्ड (PAN Card)</strong>, <strong>राशन कार्ड (Ration Card)</strong>, या योजनाओं जैसे <strong>आयुष्मान भारत</strong>, <strong>पीएम-किसान</strong>, और <strong>सुकन्या समृद्धि</strong> जैसे कीवर्ड खोजने का प्रयास करें।</p>`,
         gu: `<h3>🤖 નાગરિક સાથી તૈયાર છે</h3>
-             <p>નમસ્તે! હું તમને સત્તાવાર દસ્તાવેજો શોધવામાં, ફરિયાદ પત્રો લખવામાં અને નાગરિક સેવાઓ વિશે માર્ગદર્શન મેળવવામાં મદદ કરી શકું છું.</p>
-             <p><strong>આધાર (Aadhaar)</strong>, <strong>પાસપોર્ટ (Passport)</strong>, <strong>CPGRAMS</strong>, <strong>પાન કાર્ડ (PAN Card)</strong>, અથવા <strong>રેશન કાર્ડ (Ration Card)</strong> જેવા કીવર્ડ્સ સર્ચ કરો. તમે ઉપર સૂચવેલા પ્રશ્નો પર પણ ક્લિક કરી શકો છો.</p>`
+             <p>નમસ્તે! હું તમને સત્તાવાર દસ્તાવેજો શોધવામાં, ફરિયાદ પત્રો લખવામાં, નાગરિક સેવાઓ વિશે માર્ગદર્શન મેળવવામાં અને સરકારી યોજનાઓ શોધવામાં મદદ કરી શકું છું.</p>
+             <p><strong>આધાર (Aadhaar)</strong>, <strong>પાસપોર્ટ (Passport)</strong>, <strong>CPGRAMS</strong>, <strong>પાન કાર્ડ (PAN Card)</strong>, <strong>રેશન કાર્ડ (Ration Card)</strong>, અથવા યોજનાઓ જેવી કે <strong>આયુષ્માન ભારત</strong>, <strong>પીએમ-કિસાન</strong>, અને <strong>સુકન્યા સમૃદ્ધિ</strong> જેવા કીવર્ડ્સ સર્ચ કરો.</p>`
+    },
+    ayushman: {
+        en: `<h3>🤖 Ayushman Bharat (PM-JAY) Guide</h3>
+             <p>Pradhan Mantri Jan Arogya Yojana (PM-JAY) is the largest health assurance scheme in the world.</p>
+             <ul>
+                 <li><strong>Benefit:</strong> Free health insurance cover of up to ₹5 Lakh per family per year for secondary and tertiary care hospitalization.</li>
+                 <li><strong>Eligibility:</strong> Families listed in the SECC database (mostly low-income households, landless laborers, and occupational categories).</li>
+                 <li><strong>How to apply:</strong> Check your name on the PM-JAY website or visit any empaneled government/private hospital with your Ration Card or Aadhaar Card to generate your Golden Card.</li>
+             </ul>
+             <p>👉 Official Health Portal: <a href="https://pmjay.gov.in" target="_blank">pmjay.gov.in</a></p>`,
+        hi: `<h3>🤖 आयुष्मान भारत (PM-JAY) गाइड</h3>
+             <p>प्रधानमंत्री जन आरोग्य योजना (PM-JAY) दुनिया की सबसे बड़ी स्वास्थ्य आश्वासन योजना है।</p>
+             <ul>
+                 <li><strong>लाभ:</strong> माध्यमिक और तृतीयक देखभाल अस्पताल में भर्ती के लिए प्रति परिवार प्रति वर्ष ₹5 लाख तक का मुफ्त स्वास्थ्य बीमा कवर।</li>
+                 <li><strong>पात्रता:</strong> एसईसीसी डेटाबेस में सूचीबद्ध परिवार (मुख्य रूप से कम आय वाले परिवार, भूमिहीन मजदूर और व्यावसायिक श्रेणियां)।</li>
+                 <li><strong>आवेदन कैसे करें:</strong> पीएम-जेएवाई वेबसाइट पर अपना नाम जांचें या अपना गोल्डन कार्ड बनाने के लिए राशन कार्ड या आधार कार्ड के साथ किसी भी सूचीबद्ध सरकारी/निजी अस्पताल में जाएं।</li>
+             </ul>
+             <p>👉 आधिकारिक स्वास्थ्य पोर्टल: <a href="https://pmjay.gov.in" target="_blank">pmjay.gov.in</a></p>`,
+        gu: `<h3>🤖 આયુષ્માન ભારત (PM-JAY) માર્ગદર્શિકા</h3>
+             <p>પ્રધાનમંત્રી જન આરોગ્ય યોજના (PM-JAY) એ વિશ્વની સૌથી મોટી આરોગ્ય વીમા યોજના છે.</p>
+             <ul>
+                 <li><strong>લાભ:</strong> હોસ્પિટલમાં દાખલ થવા માટે પ્રતિ પરિવાર પ્રતિ વર્ષ ₹5 લાખ સુધીનું મફત આરોગ્ય વીમા કવચ.</li>
+                 <li><strong>પાત્રતા:</strong> SECC ડેટાબેઝમાં નોંધાયેલ પરિવારો (મુખ્યત્વે ઓછી આવક ધરાવતા પરિવારો અને શ્રમિકો).</li>
+                 <li><strong>કેવી રીતે અરજી કરવી:</strong> PM-JAY વેબસાઇટ પર તમારું નામ તપાસો અથવા તમારું ગોલ્ડન કાર્ડ બનાવવા માટે રેશન કાર્ડ અથવા આધાર કાર્ડ સાથે કોઈપણ સરકારી/ખાનગી હોસ્પિટલની મુલાકાત લો.</li>
+             </ul>
+             <p>👉 સત્તાવાર હેલ્થ પોર્ટલ: <a href="https://pmjay.gov.in" target="_blank">pmjay.gov.in</a></p>`
+    },
+    pmkisan: {
+        en: `<h3>🤖 PM-KISAN Scheme Guide</h3>
+             <p>Pradhan Mantri Kisan Samman Nidhi is a central sector scheme providing income support to landholding farmers.</p>
+             <ul>
+                 <li><strong>Benefit:</strong> A financial benefit of ₹6,000 per year is provided in three equal installments of ₹2,000 directly into the bank accounts.</li>
+                 <li><strong>Eligibility:</strong> All landholding farmer families (subject to certain exclusion criteria like institutional landholders, income tax payers, retired pensioners receiving >₹10,000/month).</li>
+                 <li><strong>How to apply:</strong> Register on the PM-KISAN portal under 'New Farmer Registration' using Aadhaar, Land Record Documents, and Bank Passbook.</li>
+             </ul>
+             <p>👉 Official Farmer Portal: <a href="https://pmkisan.gov.in" target="_blank">pmkisan.gov.in</a></p>`,
+        hi: `<h3>🤖 पीएम-किसान योजना गाइड</h3>
+             <p>प्रधानमंत्री किसान सम्मान निधि एक केंद्रीय योजना है जो भूमि धारक किसानों को आय सहायता प्रदान करती है।</p>
+             <ul>
+                 <li><strong>लाभ:</strong> सीधे बैंक खातों में ₹2,000 की तीन समान किस्तों में प्रति वर्ष ₹6,000 का वित्तीय लाभ प्रदान किया जाता है।</li>
+                 <li><strong>पात्रता:</strong> सभी भूमि धारक किसान परिवार (कुछ अपवर्जन मानदंडों को छोड़कर जैसे संस्थागत भूमि धारक, आयकर दाता, सेवानिवृत्त पेंशनभोगी)।</li>
+                 <li><strong>आवेदन कैसे करें:</strong> आधार, भूमि रिकॉर्ड दस्तावेज और बैंक पासबुक का उपयोग करके पीएम-किसान पोर्टल पर 'न्यू फार्मर रजिस्ट्रेशन' के तहत पंजीकरण करें।</li>
+             </ul>
+             <p>👉 आधिकारिक किसान पोर्टल: <a href="https://pmkisan.gov.in" target="_blank">pmkisan.gov.in</a></p>`,
+        gu: `<h3>🤖 પીએમ-કિસાન યોજના માર્ગદર્શિકા</h3>
+             <p>પ્રધાનમંત્રી કિસાન સન્માન નિધિ એ જમીન ધરાવતા ખેડૂતોને આર્થિક સહાય પૂરી પાડવા માટેની યોજના છે.</p>
+             <ul>
+                 <li><strong>લાભ:</strong> વાર્ષિક ₹6,000 ની આર્થિક સહાય સીધી બેંક ખાતામાં ₹2,000 ના ત્રણ સમાન હપ્તામાં જમા કરવામાં આવે છે.</li>
+                 <li><strong>પાત્રતા:</strong> તમામ જમીન ધરાવતા ખેડૂત પરિવારો (કેટલીક બાકાત શ્રેણીઓ સિવાય, જેમ કે સરકારી કર્મચારીઓ અને કરદાતાઓ).</li>
+                 <li><strong>કેવી રીતે અરજી કરવી:</strong> આધાર કાર્ડ, જમીન દસ્તાવેજો અને બેંક પાસબુક સાથે PM-KISAN પોર્ટલ પર 'નવા ખેડૂત નોંધણી' હેઠળ ઓનલાઇન અરજી કરો.</li>
+             </ul>
+             <p>👉 સત્તાવાર ખેડૂત પોર્ટલ: <a href="https://pmkisan.gov.in" target="_blank">pmkisan.gov.in</a></p>`
+    },
+    sukanya: {
+        en: `<h3>🤖 Sukanya Samriddhi Yojana (SSY)</h3>
+             <p>A girl child prosperity savings scheme launched under the 'Beti Bachao Beti Padhao' campaign.</p>
+             <ul>
+                 <li><strong>Benefit:</strong> Higher interest rate (compounded annually), tax tax exemption under Section 80C, and maturity lock-in for the girl child's future.</li>
+                 <li><strong>Eligibility:</strong> Can be opened by a parent/guardian for a girl child aged 10 years or below. Only two accounts per family allowed.</li>
+                 <li><strong>How to apply:</strong> Open the account at any local Post Office or authorized commercial bank branch with the Girl Child's Birth Certificate and Guardian's KYC.</li>
+             </ul>
+             <p>👉 Post Office Savings Schemes: <a href="https://www.indiapost.gov.in" target="_blank">indiapost.gov.in</a></p>`,
+        hi: `<h3>🤖 सुकन्या समृद्धि योजना (SSY)</h3>
+             <p>'बेटी बचाओ बेटी पढ़ाओ' अभियान के तहत शुरू की गई एक कन्या समृद्धि बचत योजना।</p>
+             <ul>
+                 <li><strong>लाभ:</strong> उच्च ब्याज दर (वार्षिक चक्रवृद्धि), धारा 80C के तहत कर छूट, और लड़की के भविष्य के लिए मैच्योरिटी लॉक-इन।</li>
+                 <li><strong>पात्रता:</strong> 10 वर्ष या उससे कम उम्र की लड़की के लिए माता-पिता/अभिभावक द्वारा खोला जा सकता है। प्रति परिवार केवल दो खातों की अनुमति है।</li>
+                 <li><strong>आवेदन कैसे करें:</strong> लड़की के जन्म प्रमाण पत्र और अभिभावक के केवाईसी के साथ किसी भी स्थानीय डाकघर या अधिकृत बैंक शाखा में खाता खोलें।</li>
+             </ul>
+             <p>👉 डाकघर बचत योजनाएं: <a href="https://www.indiapost.gov.in" target="_blank">indiapost.gov.in</a></p>`,
+        gu: `<h3>🤖 સુકન્યા સમૃદ્ધિ યોજના (SSY)</h3>
+             <p>'બેટી બચાવો બેટી પઢાવો' અભિયાન હેઠળ શરૂ કરાયેલ બચત યોજના.</p>
+             <ul>
+                 <li><strong>લાભ:</strong> ઊંચો વ્યાજ દર (વાર્ષિક ચક્રવૃદ્ધિ), સેક્શન 80C હેઠળ કરમુક્તિ, અને બાળકીના ભવિષ્ય માટે મેચ્યોરિટી લોક-ઈન.</li>
+                 <li><strong>પાત્રતા:</strong> ૧૦ વર્ષ કે તેથી ઓછી ઉંમરની બાળકી માટે માતા-પિતા કે વાલી દ્વારા ખાતું ખોલાવી શકાય છે. પરિવાર દીઠ માત્ર બે ખાતાની છૂટ છે.</li>
+                 <li><strong>કેવી રીતે અરજી કરવી:</strong> બાળકીના જન્મના પ્રમાણપત્ર અને વાલીના KYC દસ્તાવેજો સાથે કોઈપણ સ્થાનિક પોસ્ટ ઓફિસ અથવા અધિકૃત બેંક શાખામાં ખાતું ખોલાવો.</li>
+             </ul>
+             <p>👉 પોસ્ટ ઓફિસ બચત યોજનાઓ: <a href="https://www.indiapost.gov.in" target="_blank">indiapost.gov.in</a></p>`
+    },
+    jandhan: {
+        en: `<h3>🤖 PM Jan Dhan Yojana (PMJDY)</h3>
+             <p>National Mission for Financial Inclusion to ensure access to financial services in an affordable manner.</p>
+             <ul>
+                 <li><strong>Benefit:</strong> Zero balance savings account, free RuPay debit card with ₹2 Lakh accident insurance cover, and ₹10,000 overdraft facility (subject to criteria).</li>
+                 <li><strong>Eligibility:</strong> Any Indian citizen aged 10 years or above who does not have a basic savings account.</li>
+                 <li><strong>How to apply:</strong> Visit any local bank branch or contact a Bank Mitra (Business Correspondent) with Aadhaar Card or Voter ID.</li>
+             </ul>
+             <p>👉 PMJDY Official Portal: <a href="https://pmjdy.gov.in" target="_blank">pmjdy.gov.in</a></p>`,
+        hi: `<h3>🤖 पीएम जन धन योजना (PMJDY)</h3>
+             <p>किफायती तरीके से वित्तीय सेवाओं तक पहुंच सुनिश्चित करने के लिए वित्तीय समावेशन का राष्ट्रीय मिशन।</p>
+             <ul>
+                 <li><strong>लाभ:</strong> शून्य शेष बचत खाता, ₹2 लाख दुर्घटना बीमा कवर के साथ मुफ्त रूपे डेबिट कार्ड, और ₹10,000 ओवरड्राफ्ट सुविधा (मानदंडों के अधीन)।</li>
+                 <li><strong>पात्रता:</strong> 10 वर्ष या उससे अधिक आयु का कोई भी भारतीय नागरिक जिसके पास बुनियादी बचत खाता नहीं है।</li>
+                 <li><strong>आवेदन कैसे करें:</strong> आधार कार्ड या मतदाता पहचान पत्र के साथ किसी भी स्थानीय बैंक शाखा में जाएं या बैंक मित्र से संपर्क करें।</li>
+             </ul>
+             <p>👉 जन धन योजना पोर्टल: <a href="https://pmjdy.gov.in" target="_blank">pmjdy.gov.in</a></p>`,
+        gu: `<h3>🤖 પીએમ જન ધન યોજના (PMJDY)</h3>
+             <p>નાણાકીય સેવાઓ સરળ અને સસ્તી રીતે પૂરી પાડવા માટેનું રાષ્ટ્રીય મિશન.</p>
+             <ul>
+                 <li><strong>લાભ:</strong> ઝીરો બેલેન્સ બચત ખાતું, ₹2 લાખના અકસ્માત વીમા કવચ સાથે ફ્રી RuPay ડેબિટ કાર્ડ અને ₹10,000 ઓવરડ્રાફ્ટ સુવિધા.</li>
+                 <li><strong>પાત્રતા:</strong> ૧૦ વર્ષ કે તેથી વધુ ઉંમરના કોઈપણ ભારતીય નાગરિક જેમની પાસે બેઝિક સેવિંગ્સ એકાઉન્ટ નથી.</li>
+                 <li><strong>કેવી રીતે અરજી કરવી:</strong> આધાર કાર્ડ અથવા મતદાર આઈડી સાથે કોઈપણ સ્થાનિક બેંક શાખાની મુલાકાત લો અથવા બેંક મિત્રનો સંપર્ક કરો.</li>
+             </ul>
+             <p>👉 PMJDY સત્તાવાર પોર્ટલ: <a href="https://pmjdy.gov.in" target="_blank">pmjdy.gov.in</a></p>`
+    },
+    schemes: {
+        en: `<h3>🤖 Government Schemes Information</h3>
+             <p>We matching the following schemes in our local sandbox database:</p>
+             <ul>
+                 <li><strong>Ayushman Bharat (PM-JAY)</strong> - Health Insurance Cover</li>
+                 <li><strong>PM-KISAN</strong> - Income Support for Farmers</li>
+                 <li><strong>Sukanya Samriddhi Yojana (SSY)</strong> - Savings for Girl Child</li>
+                 <li><strong>PM Jan Dhan Yojana (PMJDY)</strong> - Zero Balance Bank Account</li>
+                 <li><strong>Atal Pension Yojana (APY)</strong> - Pension for Unorganized Sector</li>
+             </ul>
+             <p>Use our **Personalized Scheme Matcher** form to calculate matching schemes based on your profile details!</p>`,
+        hi: `<h3>🤖 सरकारी योजनाओं की जानकारी</h3>
+             <p>हम अपने स्थानीय सैंडबॉक्स डेटाबेस में निम्नलिखित योजनाओं का मिलान करते हैं:</p>
+             <ul>
+                 <li><strong>आयुष्मान भारत (PM-JAY)</strong> - स्वास्थ्य बीमा कवर</li>
+                 <li><strong>पीएम-किसान (PM-KISAN)</strong> - किसानों के लिए आय सहायता</li>
+                 <li><strong>सुकन्या समृद्धि योजना (SSY)</strong> - बालिकाओं के लिए बचत</li>
+                 <li><strong>पीएम जन धन योजना (PMJDY)</strong> - शून्य शेष बैंक खाता</li>
+                 <li><strong>अटल पेंशन योजना (APY)</strong> - असंगठित क्षेत्र के लिए पेंशन</li>
+             </ul>
+             <p>अपने प्रोफाइल विवरण के आधार पर मिलान योजनाओं की गणना करने के लिए हमारे **व्यक्तिगत योजना मिलानकर्ता** फॉर्म का उपयोग करें!</p>`,
+        gu: `<h3>🤖 સરકારી યોજનાઓ માહિતી</h3>
+             <p>અમે અમારા સ્થાનિક સેન્ડબોક્સ ડેટાબેઝમાં નીચેની યોજનાઓ મેચ કરીએ છીએ:</p>
+             <ul>
+                 <li><strong>આયુષ્માન ભારત (PM-JAY)</strong> - હેલ્થ વીમો કવચ</li>
+                 <li><strong>પીએમ-કિસાન (PM-KISAN)</strong> - ખેડૂતો માટે આર્થિક સહાય</li>
+                 <li><strong>સુકન્યા સમૃદ્ધિ યોજના (SSY)</strong> - બાળકીઓ માટે બચત</li>
+                 <li><strong>પીએમ જન ધન યોજના (PMJDY)</strong> - ઝીરો બેલેન્સ બેંક ખાતું</li>
+                 <li><strong>અટલ પેન્શન યોજના (APY)</strong> - પેન્શન યોજના</li>
+             </ul>
+             <p>તમારી પ્રોફાઇલ વિગતોના આધારે યોગ્ય યોજનાઓ શોધવા માટે અમારા **વ્યક્તિગત યોજના મેળવનાર** ફોર્મનો ઉપયોગ કરો!</p>`
     }
 };
 
@@ -913,6 +1226,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderChecklist();
     renderRecentGrievances();
     handleTrackerSearch();
+    matchGovernmentSchemes();
 
     // Bind Controls
     document.getElementById("lang-select").addEventListener("change", (e) => {
@@ -920,6 +1234,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateUIContent();
         renderChecklist();
         renderRecentGrievances();
+        matchGovernmentSchemes();
         // Recalculate AI response if active
         const ansCard = document.getElementById("ai-answer-card");
         if (ansCard.classList.contains("active")) {
@@ -989,6 +1304,11 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("draft-output-card").classList.remove("active");
         document.getElementById("tracker-id-input").value = "SB-2026-9042";
         handleTrackerSearch();
+        
+        // Reset Schemes Matcher
+        document.getElementById("scheme-matcher-form").reset();
+        matchGovernmentSchemes();
+        
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
@@ -1009,6 +1329,12 @@ document.addEventListener("DOMContentLoaded", () => {
             : state.language === 'gu' 
             ? "સેવાની શરતો: આ એક હેકાથોન પ્રોટોટાઇપ છે અને માત્ર શૈક્ષણિક/પ્રદર્શન હેતુઓ માટે રચાયેલ છે." 
             : "Terms of Service: This is a hackathon prototype and is designed solely for educational/demonstration purposes.");
+    });
+
+    // Schemes Matcher Submit
+    document.getElementById("scheme-matcher-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        matchGovernmentSchemes();
     });
 });
 
@@ -1039,6 +1365,17 @@ function updateUIContent() {
     chip2.onclick = () => fillAssistantInput(dict.prompt2, 'passport');
     chip3.textContent = dict.prompt3;
     chip3.onclick = () => fillAssistantInput(dict.prompt3, 'grievance');
+
+    const chip4 = document.getElementById("chip-4");
+    const chip5 = document.getElementById("chip-5");
+    const chip6 = document.getElementById("chip-6");
+
+    chip4.textContent = dict.prompt4;
+    chip4.onclick = () => fillAssistantInput(dict.prompt4, 'ayushman');
+    chip5.textContent = dict.prompt5;
+    chip5.onclick = () => fillAssistantInput(dict.prompt5, 'pmkisan');
+    chip6.textContent = dict.prompt6;
+    chip6.onclick = () => fillAssistantInput(dict.prompt6, 'sukanya');
 
     document.getElementById("ai-badge-txt").textContent = dict.aiResponseTitle;
 
@@ -1081,6 +1418,21 @@ function updateUIContent() {
     document.getElementById("btn-track-txt").textContent = dict.trackBtn;
     document.getElementById("btn-register-demo-txt").textContent = dict.createTrackBtn;
     document.getElementById("txt-recent-tracker-label").textContent = dict.recentGrievancesLabel;
+
+    // Schemes Explorer
+    document.getElementById("schemes-title-txt").textContent = dict.schemesTitle;
+    document.getElementById("matcher-title-txt").textContent = dict.matcherTitle;
+    document.getElementById("lbl-match-age").textContent = dict.lblMatchAge;
+    document.getElementById("lbl-match-gender").textContent = dict.lblMatchGender;
+    document.getElementById("lbl-match-profession").textContent = dict.lblMatchProfession;
+    document.getElementById("lbl-match-income").textContent = dict.lblMatchIncome;
+    document.getElementById("btn-match-txt").textContent = dict.btnMatchSchemes;
+    document.getElementById("opt-gender-any").textContent = dict.genderAny;
+    document.getElementById("opt-gender-female").textContent = dict.genderFemale;
+    document.getElementById("opt-prof-farmer").textContent = dict.profFarmer;
+    document.getElementById("opt-prof-student").textContent = dict.profStudent;
+    document.getElementById("opt-prof-unemployed").textContent = dict.profUnemployed;
+    document.getElementById("opt-prof-business").textContent = dict.profBusiness;
 
     // Checklist tabs
     document.getElementById("checklist-title-txt").textContent = dict.checklistTitle;
@@ -1143,6 +1495,16 @@ function handleChatInput() {
         keyword = "pan";
     } else if (query.includes("ration") || query.includes("food") || query.includes("रेशन") || query.includes("રેશન")) {
         keyword = "ration";
+    } else if (query.includes("ayushman") || query.includes("health") || query.includes("आयुष्मान") || query.includes("આયુષ્માન")) {
+        keyword = "ayushman";
+    } else if (query.includes("pmkisan") || query.includes("kisan") || query.includes("farmer") || query.includes("किसान") || query.includes("ખેડૂત")) {
+        keyword = "pmkisan";
+    } else if (query.includes("sukanya") || query.includes("girl") || query.includes("सुकन्या") || query.includes("સુકન્યા")) {
+        keyword = "sukanya";
+    } else if (query.includes("jandhan") || query.includes("bank") || query.includes("account") || query.includes("जन धन") || query.includes("જન ધન")) {
+        keyword = "jandhan";
+    } else if (query.includes("schemes") || query.includes("scheme") || query.includes("yojana") || query.includes("योजना") || query.includes("યોજના")) {
+        keyword = "schemes";
     }
 
     triggerAIAnswer(keyword);
@@ -1394,5 +1756,49 @@ function renderRecentGrievances() {
             handleTrackerSearch();
         });
         container.appendChild(span);
+    });
+}
+
+// Calculate and render matching government schemes
+function matchGovernmentSchemes() {
+    const age = parseInt(document.getElementById("match-age").value) || 35;
+    const gender = document.getElementById("match-gender").value;
+    const profession = document.getElementById("match-profession").value;
+    const income = parseFloat(document.getElementById("match-income").value) || 0;
+
+    const resultsContainer = document.getElementById("schemes-results-box");
+    if (!resultsContainer) return;
+
+    resultsContainer.innerHTML = "";
+
+    const lang = state.language;
+    const matched = schemesList.filter(s => s.checkMatch(age, gender, profession, income));
+
+    matched.forEach(scheme => {
+        const item = document.createElement("div");
+        item.className = "service-item";
+        item.style.cursor = "pointer";
+        item.addEventListener("click", () => {
+            // Fill chat text and query it
+            document.getElementById("chat-query").value = `${scheme.name[lang]}`;
+            triggerAIAnswer(scheme.id);
+        });
+
+        item.innerHTML = `
+            <div class="service-icon-wrapper" style="background-color: var(--accent-light); color: var(--accent);">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:1.25rem;height:1.25rem;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <div class="service-name">${scheme.name[lang]}</div>
+            <div class="service-desc" style="margin-bottom:0.75rem;">${scheme.desc[lang]}</div>
+            <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:auto;border-top:1px dashed var(--border-color);padding-top:0.5rem;">
+                <strong>${translations[lang].eligibilityLabel}</strong> ${scheme.eligibility[lang]}
+            </div>
+            <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.25rem;">
+                <strong>${translations[lang].benefitLabel}</strong> ${scheme.benefit[lang]}
+            </div>
+        `;
+        resultsContainer.appendChild(item);
     });
 }
