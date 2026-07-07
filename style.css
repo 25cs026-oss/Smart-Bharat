@@ -1013,3 +1013,32 @@ a:hover {
 .gap-4 {
     gap: 1rem;
 }
+
+/* Schemes Matcher styling */
+.matcher-container {
+    background-color: var(--bg-secondary);
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+}
+
+.matcher-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.grid-col-span-2 {
+    grid-column: span 2;
+}
+
+@media (max-width: 640px) {
+    .matcher-form {
+        grid-template-columns: 1fr;
+    }
+    .grid-col-span-2 {
+        grid-column: span 1;
+    }
+}
