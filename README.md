@@ -16,11 +16,12 @@ Smart Bharat simplifies this process by providing a unified, multilingual, front
 
 ## ✨ Key Features
 - 🌐 **Multilingual Interface:** Fully localized support for **English**, **Hindi (हिंदी)**, and **Gujarati (ગુજરાતી)**.
-- 🤖 **Simulated GenAI Assistant:** A smart natural language lookup engine that instantly answers citizen queries (Aadhaar, Passport, Grievances, certificates, PAN) in the selected language.
+- 🤖 **Simulated GenAI Assistant:** A smart natural language lookup engine that instantly answers citizen queries (Aadhaar, Passport, Grievances, certificates, PAN, and Schemes like Ayushman Bharat, PM-KISAN, and Sukanya Samriddhi) in the selected language.
 - 📋 **Government Service Finder:** Detailed information hubs covering Aadhaar, Public Grievance Portals, Consumer Rights, and Certificate helps.
+- 🔍 **Government Schemes Explorer & Matcher:** An interactive scheme matcher form (filters by Age, Gender, Profession, and Income) that displays matching central schemes and links directly to conversational AI responses.
 - ✍️ **Complaint Draft Generator:** Creates copy-pasteable, professionally structured formal complaint letters based on user inputs (category, details, location).
 - 📍 **Local Complaint Tracker:** Allows users to create mock complaint tracking codes and displays a dynamic timeline showing the progression from *Submitted* to *Resolved*.
-- 🗂️ **Dynamic Document Checklist:** Shows list of primary and secondary documents required for Aadhaar updates, passport issuance, birth certificates, and PAN cards.
+- 🗂️ **Dynamic Document Checklist:** Shows list of primary and secondary documents required for Aadhaar updates, passport issuance, birth certificates, and PAN cards with checked progress styles.
 - 🌗 **Premium Dark/Light UI:** Warm neutral light theme and a dark mode designed with high visual contrast and premium glassmorphic details.
 
 ---
