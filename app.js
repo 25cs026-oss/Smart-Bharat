@@ -1336,6 +1336,36 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         matchGovernmentSchemes();
     });
+
+    // Intersection Observer for Scroll Reveal animations
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("reveal-active");
+            }
+        });
+    }, { threshold: 0.05 });
+
+    document.querySelectorAll(".card, .hero-banner").forEach(el => {
+        el.classList.add("reveal");
+        revealObserver.observe(el);
+    });
+
+    // Floating Back-to-Top Button Handler
+    const backToTopBtn = document.getElementById("back-to-top");
+    if (backToTopBtn) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add("visible");
+            } else {
+                backToTopBtn.classList.remove("visible");
+            }
+        });
+
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
 });
 
 // Update standard text based on active language
@@ -1516,17 +1546,33 @@ function triggerAIAnswer(keyword) {
     const answerContainer = document.getElementById("ai-answer-card");
     const answerContent = document.getElementById("ai-answer-content");
 
-    // Retrieve translated HTML block or fallback
-    const htmlResponse = (aiKeywords[keyword] && aiKeywords[keyword][lang]) 
-                         ? aiKeywords[keyword][lang] 
-                         : aiKeywords["general"][lang];
-
-    answerContent.innerHTML = htmlResponse;
+    // Display typing indicator first
+    answerContent.innerHTML = `
+        <div class="typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    `;
     answerContainer.classList.add("active");
     answerContainer.dataset.keyword = keyword;
 
-    // Scroll slightly so the response is in view
+    // Scroll slightly so the loader is visible
     answerContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    // Simulate AI response stream delay
+    setTimeout(() => {
+        const htmlResponse = (aiKeywords[keyword] && aiKeywords[keyword][lang]) 
+                             ? aiKeywords[keyword][lang] 
+                             : aiKeywords["general"][lang];
+
+        answerContent.innerHTML = `<div class="fade-in">${htmlResponse}</div>`;
+        
+        // Re-scroll to ensure content is fully displayed
+        setTimeout(() => {
+            answerContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+    }, 650);
 }
 
 // External card trigger for services
