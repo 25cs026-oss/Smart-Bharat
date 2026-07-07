@@ -12,6 +12,14 @@ The Indian administrative and civic service ecosystem is robust but complex. Cit
 - **Scheme Inaccessibility:** Finding eligible social welfare schemes requires parsing multiple eligibility criteria, resulting in low adoption of central welfare benefits.
 - **Flat/Static UIs:** Generic, flat governmental websites fail to engage users or provide visual feedback, resulting in poor digital experiences.
 
+## 2b. Challenge Alignment
+Smart Bharat directly addresses the challenge of making public services easier to understand and access by:
+- explaining government services in simple language,
+- reducing language barriers through multilingual support,
+- helping users identify required documents,
+- assisting with complaint drafting,
+- and demonstrating civic grievance tracking in an intuitive interface.
+
 ## 3. The Solution: Smart Bharat
 "Smart Bharat" acts as a friendly digital intermediary. Built frontend-first for rapid loading and instant deployment (with zero server-side latency or database dependencies), it provides:
 1. **Interactive AI Assistant (Multilingual & Animated):** A client-side AI response engine configured to answer queries regarding civic services in English, Hindi, and Gujarati. It features a realistic bouncing-dot typing indicator (simulating GenAI streaming lag) and smooth content fades.

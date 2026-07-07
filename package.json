@@ -1,0 +1,11 @@
+{
+  "name": "smart-bharat",
+  "version": "1.0.0",
+  "description": "AI-Powered Civic Companion for Indian Citizens",
+  "main": "app.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

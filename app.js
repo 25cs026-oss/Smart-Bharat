@@ -1,4 +1,18 @@
-// Smart Bharat – App State
+/* ==========================================================================
+   SECTION 1: UTILITIES & SECURITY SANITIZERS
+   ========================================================================== */
+function escapeHTML(str) {
+    return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+/* ==========================================================================
+   SECTION 2: GLOBAL STATE MANAGEMENT
+   ========================================================================== */
 const state = {
     language: 'en', // 'en', 'hi', 'gu'
     theme: 'light',
@@ -33,7 +47,9 @@ const state = {
     ]
 };
 
-// Multilingual Translation Database
+/* ==========================================================================
+   SECTION 3: MULTILINGUAL TRANSLATION DATABASE
+   ========================================================================== */
 const translations = {
     en: {
         title: "Smart Bharat",
@@ -340,7 +356,9 @@ const translations = {
     }
 };
 
-// Document Checklist Data
+/* ==========================================================================
+   SECTION 4: DOCUMENT CHECKLIST DATABASE
+   ========================================================================== */
 const checklistData = {
     aadhaar: {
         en: [
@@ -424,7 +442,9 @@ const checklistData = {
     }
 };
 
-// Government Schemes Local Database
+/* ==========================================================================
+   SECTION 5: GOVERNMENT SCHEMES LOCAL DATABASE
+   ========================================================================== */
 const schemesList = [
     {
         id: "pmkisan",
@@ -538,7 +558,9 @@ const schemesList = [
     }
 ];
 
-// Mock AI Engine Rule Database & Translation Outputs
+/* ==========================================================================
+   SECTION 6: AI COMPANION CLASSIFIER DATABASE
+   ========================================================================== */
 const aiKeywords = {
     aadhaar: {
         en: `<h3>🤖 Aadhaar Services Guide</h3>
@@ -851,7 +873,9 @@ const aiKeywords = {
     }
 };
 
-// Complaint Drafting Templates
+/* ==========================================================================
+   SECTION 7: COMPLAINT DRAFTING TEMPLATES
+   ========================================================================== */
 const draftTemplates = {
     road: {
         en: (location, details) => 
@@ -1204,7 +1228,9 @@ ${details}
     }
 };
 
-// Initialize Application & Bind Event Listeners
+/* ==========================================================================
+   SECTION 8: APPLICATION INITIALIZATION & EVENT LISTENERS
+   ========================================================================== */
 document.addEventListener("DOMContentLoaded", () => {
     // Load local storage complaints if they exist
     const savedComplaints = localStorage.getItem("sb_complaints");
@@ -1455,7 +1481,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// Update standard text based on active language
+/* ==========================================================================
+   SECTION 9: UI LANGUAGE & THEME RENDERING ENGINE
+   ========================================================================== */
 function updateUIContent() {
     const lang = state.language;
     const dict = translations[lang];
@@ -1588,7 +1616,9 @@ function setTheme(theme) {
     }
 }
 
-// AI Assistant click helper
+/* ==========================================================================
+   SECTION 10: AI CHAT ASSISTANT ENGINE
+   ========================================================================== */
 function fillAssistantInput(text, keyword) {
     document.getElementById("chat-query").value = text;
     triggerAIAnswer(keyword);
@@ -1684,7 +1714,9 @@ function triggerServiceInfo(serviceType) {
     triggerAIAnswer(key);
 }
 
-// Document Checklist tab click handler
+/* ==========================================================================
+   SECTION 11: DOCUMENT CHECKLIST LOGIC
+   ========================================================================== */
 function setChecklistTab(tab) {
     state.activeChecklistTab = tab;
     // Update active tab styling
@@ -1716,7 +1748,9 @@ function renderChecklist() {
     });
 }
 
-// Generate Grievance draft
+/* ==========================================================================
+   SECTION 12: COMPLAINT DRAFTING FLOW
+   ========================================================================== */
 function generateDraft() {
     const category = document.getElementById("issue-category").value;
     const location = document.getElementById("location-input").value.trim();
@@ -1753,7 +1787,9 @@ function copyDraftText() {
     });
 }
 
-// Complaint tracking search logic
+/* ==========================================================================
+   SECTION 13: GRIEVANCE TRACKING FLOW
+   ========================================================================== */
 function handleTrackerSearch(shouldScroll = true) {
     const input = document.getElementById("tracker-id-input").value.trim();
     if (!input) return;
@@ -1813,10 +1849,10 @@ function handleTrackerSearch(shouldScroll = true) {
 // Register a new mock complaint and auto-track it
 function registerAndTrackComplaint() {
     const category = document.getElementById("issue-category").value;
-    const location = document.getElementById("location-input").value.trim();
-    const details = document.getElementById("details-input").value.trim();
+    const rawLocation = document.getElementById("location-input").value.trim();
+    const rawDetails = document.getElementById("details-input").value.trim();
 
-    if (!location || !details) {
+    if (!rawLocation || !rawDetails) {
         alert(state.language === 'hi' 
             ? "शिकायत दर्ज करने के लिए विवरण और स्थान आवश्यक हैं।" 
             : state.language === 'gu' 
@@ -1824,6 +1860,9 @@ function registerAndTrackComplaint() {
             : "Location and details are required to register a complaint.");
         return;
     }
+
+    const location = escapeHTML(rawLocation);
+    const details = escapeHTML(rawDetails);
 
     const randomId = `SB-2026-${Math.floor(1000 + Math.random() * 9000)}`;
     const today = new Date().toISOString().split('T')[0];
@@ -1894,7 +1933,9 @@ function renderRecentGrievances() {
     });
 }
 
-// Calculate and render matching government schemes
+/* ==========================================================================
+   SECTION 14: GOVERNMENT SCHEMES MATCHER LOGIC
+   ========================================================================== */
 function matchGovernmentSchemes() {
     const age = parseInt(document.getElementById("match-age").value) || 35;
     const gender = document.getElementById("match-gender").value;
