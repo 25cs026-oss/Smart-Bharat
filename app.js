@@ -1369,28 +1369,89 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Custom Aura Cursor Follower Logic
     const cursor = document.getElementById("custom-cursor");
-    if (cursor) {
-        window.addEventListener("mousemove", (e) => {
-            cursor.style.left = `${e.clientX}px`;
-            cursor.style.top = `${e.clientY}px`;
-            if (cursor.style.opacity === "0") {
-                cursor.style.opacity = "1";
-            }
-        });
+    const cursorText = document.getElementById("cursor-text");
+    if (cursor && cursorText) {
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        // Bypasses cursor tracking listeners entirely on reduced motion requests or tablets/touch viewports
+        if (!prefersReducedMotion && window.innerWidth > 1024) {
+            window.addEventListener("mousemove", (e) => {
+                cursor.style.left = `${e.clientX}px`;
+                cursor.style.top = `${e.clientY}px`;
+                cursor.classList.add("active");
+            });
 
-        window.addEventListener("mouseleave", () => {
-            cursor.style.opacity = "0";
-        });
-
-        // Delegate mouseover hover states for interactive elements
-        const hoverables = "a, button, select, input, [type='checkbox'], .suggestion-chip, .service-item, .checklist-item label, .timeline-node";
-        document.body.addEventListener("mouseover", (e) => {
-            if (e.target.closest(hoverables)) {
-                cursor.classList.add("hovered");
-            } else {
+            window.addEventListener("mouseleave", () => {
+                cursor.classList.remove("active");
                 cursor.classList.remove("hovered");
-            }
-        });
+            });
+
+            window.addEventListener("mousedown", () => {
+                cursor.classList.add("clicked");
+            });
+
+            window.addEventListener("mouseup", () => {
+                setTimeout(() => {
+                    cursor.classList.remove("clicked");
+                }, 250);
+            });
+
+            // Delegate mouseover hover states for interactive elements
+            const hoverables = "a, button, select, input, textarea, .card, .suggestion-chip, .service-item, .checklist-item label, .timeline-node, #recent-grievances-list span, .chk-tab";
+            document.body.addEventListener("mouseover", (e) => {
+                const target = e.target.closest(hoverables);
+                if (!target) {
+                    cursor.classList.remove("hovered");
+                    cursorText.textContent = "";
+                    return;
+                }
+
+                // Determine context label
+                let actionText = "";
+
+                // 1. Toggle context
+                if (target.id === "lang-select" || 
+                    target.id === "theme-toggle-btn" || 
+                    target.classList.contains("chk-tab") || 
+                    target.closest(".checklist-item")) {
+                    actionText = state.language === 'hi' ? "बदलें" : state.language === 'gu' ? "બદલો" : "Toggle";
+                }
+                // 2. Ask context
+                else if (target.id === "chat-query" || 
+                         target.id === "chat-submit" || 
+                         target.classList.contains("suggestion-chip")) {
+                    actionText = state.language === 'hi' ? "पूछें" : state.language === 'gu' ? "પૂછો" : "Ask";
+                }
+                // 3. Draft context
+                else if (target.closest("#complaint-form") || 
+                         target.id === "btn-copy-draft" ||
+                         target.closest(".btn-copy")) {
+                    actionText = state.language === 'hi' ? "लिखें" : state.language === 'gu' ? "લખો" : "Draft";
+                }
+                // 4. Track context
+                else if (target.closest("#tracker-form") || 
+                         target.closest(".tracker-input-group") ||
+                         target.id === "btn-register-demo" || 
+                         target.closest("#recent-grievances-list") ||
+                         target.closest(".quick-tracker-btn")) {
+                    actionText = state.language === 'hi' ? "ट्रैक" : state.language === 'gu' ? "ટ્રેક" : "Track";
+                }
+                // 5. Open context
+                else if (target.tagName === "A" || 
+                         target.classList.contains("service-item") || 
+                         target.closest(".service-item") ||
+                         target.closest(".card")) {
+                    actionText = state.language === 'hi' ? "खोलें" : state.language === 'gu' ? "ખોલો" : "Open";
+                }
+
+                if (actionText) {
+                    cursorText.textContent = actionText;
+                    cursor.classList.add("hovered");
+                } else {
+                    cursor.classList.remove("hovered");
+                    cursorText.textContent = "";
+                }
+            });
+        }
     }
 });
 

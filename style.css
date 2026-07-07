@@ -39,11 +39,11 @@
 }
 
 [data-theme="dark"] {
-    /* Color Palette - Dark theme */
-    --bg-primary: #0F1212;
-    --bg-secondary: #161A1A;
-    --bg-card: #1D2323;
-    --border-color: #2F3939;
+    /* Color Palette - Premium Charcoal Dark Theme */
+    --bg-primary: #111314;
+    --bg-secondary: #171A1B;
+    --bg-card: #1E2123;
+    --border-color: #2D3336;
     --text-primary: #F3F4F6;
     --text-secondary: #D1D5DB;
     --text-muted: #9CA3AF;
@@ -62,10 +62,10 @@
     --info: #3B82F6;
     --info-light: #16243F;
 
-    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
-    --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.35), 0 2px 4px -2px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.45), 0 4px 6px -4px rgba(0, 0, 0, 0.45);
+    --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.55), 0 8px 10px -6px rgba(0, 0, 0, 0.55);
 }
 
 /* Reset & Base Styles */
@@ -85,8 +85,19 @@ body {
     color: var(--text-primary);
     font-family: var(--font-sans);
     line-height: 1.5;
-    transition: var(--transition);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     overflow-x: hidden;
+}
+
+[data-theme="dark"] body {
+    /* Subtle radial gradients (teal on top-left, warm amber on bottom-right) + micro-grid texture */
+    background-image: 
+        radial-gradient(circle at 12% 18%, rgba(20, 184, 166, 0.045) 0%, transparent 45%),
+        radial-gradient(circle at 88% 82%, rgba(212, 163, 115, 0.03) 0%, transparent 40%),
+        linear-gradient(rgba(255, 255, 255, 0.005) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.005) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 56px 56px, 56px 56px;
+    background-attachment: fixed;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1215,44 +1226,100 @@ a:hover {
     }
 }
 
-/* Custom Aura Cursor Follower */
+/* Custom Cursor Follower */
 .custom-cursor {
-    width: 12px;
-    height: 12px;
-    border: 2px solid var(--accent);
-    background-color: transparent;
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent);
+    border: none;
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
     transform: translate(-50%, -50%);
-    transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
-                height 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
-                background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
-                border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
-                opacity 0.35s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: left 0.1s cubic-bezier(0.25, 1, 0.5, 1), 
+                top 0.1s cubic-bezier(0.25, 1, 0.5, 1), 
+                width 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+                height 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-radius 0.22s ease,
+                background-color 0.22s ease,
+                opacity 0.22s ease;
     z-index: 9999;
     opacity: 0;
-    box-shadow: 0 0 8px rgba(15, 118, 110, 0.2);
+    overflow: hidden;
 }
 
-/* Custom Cursor States */
+/* Active visible state on mousemove */
+.custom-cursor.active {
+    opacity: 0.85;
+}
+
+/* Capsule Label Transformation */
 .custom-cursor.hovered {
-    width: 32px;
-    height: 32px;
-    background-color: rgba(15, 118, 110, 0.15);
-    border-color: var(--accent);
-    box-shadow: 0 0 16px rgba(15, 118, 110, 0.4);
+    width: auto;
+    height: auto;
+    min-width: 48px;
+    min-height: 20px;
+    border-radius: 12px;
+    background-color: var(--accent);
+    color: white;
+    padding: 3px 8px;
+    opacity: 0.95;
+    box-shadow: 0 4px 10px rgba(15, 118, 110, 0.25);
 }
 
-[data-theme="dark"] .custom-cursor.hovered {
-    background-color: rgba(45, 212, 191, 0.2);
-    border-color: #2dd4bf;
-    box-shadow: 0 0 16px rgba(45, 212, 191, 0.5);
+.cursor-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    display: none;
+    color: white !important;
 }
 
-/* Hide cursor follower on touch-only devices */
-@media (hover: none) {
+.custom-cursor.hovered .cursor-text {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Click pulse animation */
+.custom-cursor.clicked {
+    animation: cursor-pulse 0.25s ease-out;
+}
+
+@keyframes cursor-pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 0 0px rgba(15, 118, 110, 0.4);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.15);
+        box-shadow: 0 0 0 8px rgba(15, 118, 110, 0);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 0 0px rgba(15, 118, 110, 0);
+    }
+}
+
+/* Accessibility: respects prefers-reduced-motion config */
+@media (prefers-reduced-motion: reduce) {
     .custom-cursor {
-        display: none;
+        display: none !important;
+    }
+}
+
+/* Disable custom cursor on small viewports and touchscreen devices */
+@media (max-width: 1024px), (hover: none) {
+    .custom-cursor {
+        display: none !important;
     }
 }
