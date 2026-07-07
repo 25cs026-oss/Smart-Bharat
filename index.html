@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Smart Bharat – AI-Powered Civic Companion</title>
+    <meta name="description" content="An interactive civic assistant helping Indian citizens understand government services, generate professional complaints, verify document checklists, and track local grievances in English, Hindi, and Gujarati.">
+    <meta name="keywords" content="Smart Bharat, Civic Companion, Aadhaar Card, Passport Application, Public Grievance, CPGRAMS, Digital India, India Sandbox">
+    
+    <!-- Styling & Google Fonts -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navigation Bar -->
+    <nav class="navbar" id="app-nav">
+        <div class="nav-container">
+            <a href="#" class="brand" id="brand-link">
+                <div class="brand-icon" id="brand-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="width:1.25rem;height:1.25rem;">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" />
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <div id="app-title">Smart Bharat</div>
+                    <div id="app-subtitle" style="font-size:0.75rem;font-weight:500;color:var(--text-muted);margin-top:-2px;">AI-Powered Civic Companion</div>
+                </div>
+            </a>
+
+            <div class="nav-controls">
+                <!-- Multilingual Switcher -->
+                <select id="lang-select" class="lang-selector" aria-label="Language Selector">
+                    <option value="en" selected>English</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                    <option value="gu">ગુજરાતી (Gujarati)</option>
+                </select>
+
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:1.2rem;height:1.2rem">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <header class="hero" id="hero-banner-section">
+        <div class="hero-banner">
+            <div class="hero-badge" id="hero-badge-wrap">
+                <span class="pulse-indicator" style="width:6px;height:6px;background-color:var(--accent);display:inline-block;margin-right:2px;"></span>
+                <span id="hero-badge-txt">Government of India Citizen Sandbox</span>
+            </div>
+            <h1 class="hero-title" id="hero-title-txt">Empowering Citizens via <span>GenAI Assistance</span></h1>
+            <p class="hero-subtitle" id="hero-subtitle-txt">Understand government services, draft administrative grievances, find required documents, and track issues in your local language.</p>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard-grid">
+
+        <!-- Left Column: AI Assistant, Service Finder, Draft Generator -->
+        <section class="col-left">
+
+            <!-- 1. AI Assistant Section -->
+            <div class="card ai-card" id="ai-assistant-panel">
+                <h2 class="card-title" id="ai-title-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l-1.81-2.904m-5.18-2.22l2.904-.727L3 18l.81-5.183M17 16.5h.008v.008H17v-.008c0-.37-.078-.7-.22-1a4.12 4.12 0 00-1.18-1.5 6.01 6.01 0 00-1.85-1A7.63 7.63 0 0012 12.5c-.75 0-1.45.1-2.1.3a6.01 6.01 0 00-1.85 1 4.12 4.12 0 00-1.18 1.5c-.14.3-.22.63-.22 1v.008H6.5V16c0-1.1.28-2.1.78-3 .5-.8 1.2-1.5 2.1-2a10 10 0 016.24 0c.9.5 1.6 1.2 2.1 2 .5.9.78 1.9.78 3v.5z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z" />
+                    </svg>
+                    <span id="ai-title">Smart AI Civic Assistant</span>
+                </h2>
+                
+                <div class="chat-input-wrapper">
+                    <input type="text" id="chat-query" class="chat-input" placeholder="Ask anything (e.g., 'How do I update Aadhaar?' or 'Report broken road')">
+                    <button id="chat-submit" class="chat-send-btn" aria-label="Send Query">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="width:1.15rem;height:1.15rem;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="suggestions-container" id="suggestions-box">
+                    <div class="suggestions-label" id="suggested-label">Suggested Prompts</div>
+                    <div class="suggestions-list" id="suggestions-list">
+                        <button class="suggestion-chip" id="chip-1">How to update Aadhaar address?</button>
+                        <button class="suggestion-chip" id="chip-2">What is needed for Passport?</button>
+                        <button class="suggestion-chip" id="chip-3">Where do I report broken street lights?</button>
+                    </div>
+                </div>
+
+                <!-- Answer Output Card -->
+                <div class="answer-card" id="ai-answer-card">
+                    <div class="answer-header">
+                        <span class="answer-badge">
+                            <span class="pulse-indicator" style="width:4px;height:4px;background-color:var(--accent);display:inline-block;margin-right:2px;"></span>
+                            <span id="ai-badge-txt">AI Companion Response</span>
+                        </span>
+                    </div>
+                    <div class="answer-content" id="ai-answer-content">
+                        <!-- Filled dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Government Service Finder -->
+            <div class="card" id="service-finder-panel">
+                <h2 class="card-title" id="services-title-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    </svg>
+                    <span id="services-title-txt">Government Service Finder</span>
+                </h2>
+
+                <div class="services-grid" id="services-grid">
+                    <div class="service-item" id="srv-aadhaar" onclick="triggerServiceInfo('aadhaar')">
+                        <div class="service-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:1.25rem;height:1.25rem;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336A6.721 6.721 0 019 15c-1.332 0-2.567-.387-3.606-1.055A1.875 1.875 0 014.5 12.27V11.25a.75.75 0 01.75-.75h7.5a.75.75 0 01.75.75v1.02c0 .762-.43 1.455-1.11 1.767z" />
+                            </svg>
+                        </div>
+                        <div class="service-name" id="srv-aadhaar-name">Aadhaar Services</div>
+                        <div class="service-desc" id="srv-aadhaar-desc">Update address, phone number, lock biometrics, or download e-Aadhaar.</div>
+                    </div>
+
+                    <div class="service-item" id="srv-grievance" onclick="triggerServiceInfo('grievance')">
+                        <div class="service-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:1.25rem;height:1.25rem;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.771-.345 47.77 47.77 0 005.197-.478c1.583-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.124-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                            </svg>
+                        </div>
+                        <div class="service-name" id="srv-grievance-name">Public Grievance (CPGRAMS)</div>
+                        <div class="service-desc" id="srv-grievance-desc">Lodge complaints directly to Central/State Ministries & Departments.</div>
+                    </div>
+
+                    <div class="service-item" id="srv-consumer" onclick="triggerServiceInfo('consumer')">
+                        <div class="service-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:1.25rem;height:1.25rem;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                        </div>
+                        <div class="service-name" id="srv-consumer-name">Consumer Helpline</div>
+                        <div class="service-desc" id="srv-consumer-desc">File cases against unfair trade practices, defective products, or service issues.</div>
+                    </div>
+
+                    <div class="service-item" id="srv-certificate" onclick="triggerServiceInfo('certificate')">
+                        <div class="service-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:1.25rem;height:1.25rem;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                            </svg>
+                        </div>
+                        <div class="service-name" id="srv-certificate-name">Certificates & Documents</div>
+                        <div class="service-desc" id="srv-certificate-desc">Apply for Birth, Death, Income, Caste, or Marriage certificates.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Complaint Draft Generator -->
+            <div class="card" id="complaint-draft-panel">
+                <h2 class="card-title" id="generator-title-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                    </svg>
+                    <span id="generator-title-txt">Civic Grievance Draft Generator</span>
+                </h2>
+
+                <form id="complaint-form">
+                    <div class="form-group">
+                        <label for="issue-category" class="form-label" id="lbl-issue">Select Issue Category</label>
+                        <select id="issue-category" class="form-select">
+                            <option value="road">Roads & Potholes</option>
+                            <option value="water">Water Supply & Sewage</option>
+                            <option value="waste">Garbage & Sanitation</option>
+                            <option value="light">Street Light Outage</option>
+                            <option value="other">Other Administrative Grievances</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location-input" class="form-label" id="lbl-location">Specify Location / Address</label>
+                        <input type="text" id="location-input" class="form-input" placeholder="e.g., Ward 4, Shastri Nagar, Metro Station Road" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="details-input" class="form-label" id="lbl-details">Describe the Issue</label>
+                        <textarea id="details-input" class="form-textarea" placeholder="Write specific details (e.g., water leakage near school, pothole since 2 weeks)" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="btn-generate">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:1.2rem;height:1.2rem;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                        </svg>
+                        <span id="btn-generate-txt">Generate Formal Complaint Draft</span>
+                    </button>
+                </form>
+
+                <!-- Draft Output Card -->
+                <div class="draft-output-card" id="draft-output-card">
+                    <div class="draft-header">
+                        <span class="draft-title" id="draft-output-title">Generated Formal Draft</span>
+                        <button class="btn-copy" id="btn-copy-draft" aria-label="Copy Draft Content">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:0.95rem;height:0.95rem;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H5.25M17.25 9.75v10.5c0 .621-.504 1.125-1.125 1.125h-3.375a1.125 1.125 0 01-1.125-1.125V9.75c0-.621.504-1.125 1.125-1.125H16.25c.621 0 1.125.504 1.125 1.125z" />
+                            </svg>
+                            <span id="btn-copy-draft-txt">Copy Text</span>
+                        </button>
+                    </div>
+                    <pre class="draft-body" id="draft-body-text"></pre>
+                    <p class="draft-hint" id="draft-hint" style="font-size:0.75rem;color:var(--text-muted);margin-top:0.75rem;line-height:1.4;"></p>
+                    
+                    <div class="quick-add-tracker">
+                        <button class="quick-tracker-btn" id="btn-register-demo">
+                            <span class="pulse-indicator" style="width:6px;height:6px;background-color:var(--accent);display:inline-block;"></span>
+                            <span id="btn-register-demo-txt">Register & Track in Demo</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Right Column: Document Checklist, Tracker, Links -->
+        <section class="col-right">
+
+            <!-- 4. Document Checklist Section -->
+            <div class="card" id="checklist-panel">
+                <h2 class="card-title" id="checklist-title-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span id="checklist-title-txt">Document Checklist Assistant</span>
+                </h2>
+
+                <div class="checklist-tabs" id="checklist-tabs-container">
+                    <button class="checklist-tab active" id="chk-tab-aadhaar" onclick="setChecklistTab('aadhaar')">Aadhaar Card</button>
+                    <button class="checklist-tab" id="chk-tab-passport" onclick="setChecklistTab('passport')">Passport</button>
+                    <button class="checklist-tab" id="chk-tab-birth" onclick="setChecklistTab('birth')">Birth Cert.</button>
+                    <button class="checklist-tab" id="chk-tab-pan" onclick="setChecklistTab('pan')">PAN Card</button>
+                </div>
+
+                <div class="checklist-content" id="checklist-content-box">
+                    <div class="checklist-header-title" id="chk-header-txt">Required Documents for Application / Update</div>
+                    <ul class="checklist-items" id="checklist-items-list">
+                        <!-- Filled dynamically -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 5. Complaint Tracker Section -->
+            <div class="card" id="tracker-panel">
+                <h2 class="card-title" id="tracker-title-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.03 0 1.9.693 2.166 1.638m-7.377 12.481A6.719 6.719 0 0112 18c-1.332 0-2.567-.387-3.606-1.055A1.875 1.875 0 017.5 15.27V9.75h9v5.52a1.875 1.875 0 01-1.11 1.767z" />
+                    </svg>
+                    <span id="tracker-title-txt">Civic Grievance Tracker</span>
+                </h2>
+
+                <div class="tracker-input-group">
+                    <input type="text" id="tracker-id-input" class="form-input" placeholder="Enter Complaint ID (e.g. SB-2026-9042)" value="SB-2026-9042" required>
+                    <button id="tracker-submit" class="btn-primary" style="width:auto;padding:0 1.25rem;" aria-label="Search Tracker">
+                        <span id="btn-track-txt">Track</span>
+                    </button>
+                </div>
+                <div id="tracker-recent-box" style="margin-top:-0.5rem;margin-bottom:1.25rem;font-size:0.825rem;color:var(--text-muted);display:flex;flex-wrap:wrap;gap:0.35rem;align-items:center;">
+                    <span id="txt-recent-tracker-label">Sample Grievances:</span> 
+                    <span id="recent-grievances-list" style="display:flex;gap:0.5rem;">
+                        <!-- Filled dynamically -->
+                    </span>
+                </div>
+
+                <div id="tracker-error-txt" style="color:var(--danger);font-size:0.85rem;margin-bottom:1rem;" class="hidden"></div>
+
+                <!-- Timeline Visualizer -->
+                <div class="tracker-results" id="tracker-results-panel">
+                    <div class="tracker-header">
+                        <div class="tracker-id" id="track-c-id">SB-2026-9042</div>
+                        <div class="tracker-date" id="track-c-date">Filed on: 2026-07-01</div>
+                    </div>
+
+                    <div class="timeline" id="tracker-timeline">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Official Info Links Portal -->
+            <div class="card" id="info-links-panel">
+                <h2 class="card-title" id="links-title-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                    </svg>
+                    <span id="links-title-txt">Official Citizen Portals</span>
+                </h2>
+
+                <div class="links-grid" id="links-grid">
+                    <a href="https://uidai.gov.in" target="_blank" class="link-card" id="lnk-uidai">
+                        <span id="lnk-aadhaar-txt">UIDAI (Aadhaar)</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
+                    </a>
+                    
+                    <a href="https://pgportal.gov.in" target="_blank" class="link-card" id="lnk-cpgrams">
+                        <span id="lnk-cpgrams-txt">CPGRAMS Grievance</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
+                    </a>
+
+                    <a href="https://consumerhelpline.gov.in" target="_blank" class="link-card" id="lnk-consumer">
+                        <span id="lnk-ncdrc-txt">National Consumer Helpline</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
+                    </a>
+
+                    <a href="https://www.digilocker.gov.in" target="_blank" class="link-card" id="lnk-digilocker">
+                        <span id="lnk-digilocker-txt">DigiLocker Portal</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
+                    </a>
+
+                    <a href="https://serviceonline.gov.in" target="_blank" class="link-card" id="lnk-serviceplus">
+                        <span id="lnk-serviceplus-txt">ServicePlus (State Services)</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
+                    </a>
+
+                    <a href="https://www.nvsp.in" target="_blank" class="link-card" id="lnk-nvsp">
+                        <span id="lnk-nvsp-txt">Voter Services Portal (NVSP)</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
+                    </a>
+                </div>
+            </div>
+
+        </section>
+        
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer" id="app-footer">
+        <div id="footer-rights">© 2026 Smart Bharat. Developed for Indian Citizens under Digital India Sandbox. Frontend prototype first.</div>
+        <div class="footer-links" id="footer-links-wrap">
+            <a href="#" id="footer-privacy-lnk">Privacy Policy</a>
+            <a href="#" id="footer-terms-lnk">Terms of Service</a>
+        </div>
+    </footer>
+
+    <!-- App JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
