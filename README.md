@@ -23,6 +23,35 @@ Smart Bharat directly addresses the challenge of making public services easier t
 - assisting with complaint drafting,
 - and demonstrating civic grievance tracking in an intuitive interface.
 
+### Problem vs. Feature Mapping Matrix
+
+| Civic Pain Point | Smart Bharat Solution Feature |
+| :--- | :--- |
+| **Complex Administrative Language** | Plain Language Explanations & AI Companion |
+| **Severe Language Barriers** | Fully Localized Interface (English, Hindi, Gujarati) |
+| **Confusing Documentation Requirements** | Contextual Document Checklist with Check-off Progress |
+| **Difficulty Drafting Formal Grievances** | AI-Powered Smart Complaint Draft Generator |
+| **Lack of Transparent Tracking** | Civic Timeline Tracker with pulsing status nodes |
+| **Inaccessibility of Welfare Schemes** | Personalized Government Scheme Matcher Engine |
+
+### User Journey Mapping
+1. **Discover:** The citizen opens the app and inputs details (age, income, gender) in the Scheme Matcher to find eligibility.
+2. **Consult:** The citizen reads details of the matching scheme or queries the AI Assistant in English, Hindi, or Gujarati.
+3. **Resolve:** The citizen uses the Complaint Draft Generator to draft a formal grievance letter for civic issues.
+4. **Track:** The citizen enters the generated ID in the Tracker to monitor simulated status milestones.
+
+### Future Expansion Scope
+- 📷 **OCR Integration:** Enable scanning of documents to auto-verify credentials.
+- 🎙️ **Speech-to-Text & Voice Actions:** Voice navigation for rural citizens with low digital literacy.
+- 🗺️ **GPS Location Detection:** Auto-fill municipal ward details using browser coordinates.
+- 🔗 **Official API Linkage:** Integrations with CPGRAMS, DigiLocker, and Aadhaar UIDAI production systems.
+- 💬 **WhatsApp bot delivery:** Package draft generation and tracker alerts directly into messaging threads.
+
+### Civic Impact Indicators
+- **Bridges the Digital Divide:** Empowers non-English speakers to access information.
+- **Drives Welfare Adoption:** Increases uptake of schemes like Ayushman Bharat or PM-KISAN.
+- **Saves Administrative Overhead:** Lowers portal traffic by addressing common document queries locally.
+
 ---
 
 ## ✨ Key Features

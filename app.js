@@ -1,13 +1,154 @@
 /* ==========================================================================
    SECTION 1: UTILITIES & SECURITY SANITIZERS
    ========================================================================== */
+
+/**
+ * Escapes HTML control characters in a string to prevent XSS.
+ * @param {string} str - Raw input string.
+ * @returns {string} Safe escaped string.
+ */
 function escapeHTML(str) {
-    return str
+    return String(str || '')
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+}
+
+/**
+ * Validates user string input for length limits, scripts, and alpha character presence.
+ * @param {string} text - Raw input text to validate.
+ * @param {number} minLen - Minimum character length constraint.
+ * @param {number} maxLen - Maximum character length constraint.
+ * @returns {Object} Validation result { valid: boolean, reason?: string }.
+ */
+function validateInput(text, minLen = 5, maxLen = 120) {
+    const trimmed = String(text || '').trim();
+    if (trimmed.length < minLen) {
+        return { valid: false, reason: 'too_short' };
+    }
+    if (trimmed.length > maxLen) {
+        return { valid: false, reason: 'too_long' };
+    }
+    const maliciousPatterns = /<script>|iframe|javascript:|data:|vbscript:/i;
+    if (maliciousPatterns.test(trimmed)) {
+        return { valid: false, reason: 'malicious' };
+    }
+    const alphanumericPattern = /[a-zA-Z0-9\u0900-\u097F\u0A80-\u0AFF]/;
+    if (!alphanumericPattern.test(trimmed)) {
+        return { valid: false, reason: 'only_symbols' };
+    }
+    return { valid: true };
+}
+
+/**
+ * Global rate-limiting submission click throttle to avoid action spam.
+ * @returns {boolean} True if click is allowed, false if blocked.
+ */
+let lastSubmitTime = 0;
+function checkRateLimit() {
+    const now = Date.now();
+    if (now - lastSubmitTime < 1000) {
+        return false;
+    }
+    lastSubmitTime = now;
+    return true;
+}
+
+function $(id) {
+    return document.getElementById(id);
+}
+
+function setText(id, text) {
+    const el = $(id);
+    if (el) el.textContent = String(text || '');
+}
+
+function createSchemeCard(scheme, lang) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'service-item scheme-card';
+    button.setAttribute('aria-label', scheme.name[lang]);
+
+    button.addEventListener('click', () => {
+        const chatQuery = $("chat-query");
+        if (chatQuery) {
+            chatQuery.value = scheme.name[lang];
+        }
+        triggerAIAnswer(scheme.id);
+    });
+
+    const iconWrapper = document.createElement('div');
+    iconWrapper.className = 'service-icon-wrapper';
+    iconWrapper.style.backgroundColor = 'var(--accent-light)';
+    iconWrapper.style.color = 'var(--accent)';
+
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '2');
+    svg.style.width = '1.25rem';
+    svg.style.height = '1.25rem';
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('stroke-linecap', 'round');
+    path.setAttribute('stroke-linejoin', 'round');
+    path.setAttribute('d', 'M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z');
+    svg.appendChild(path);
+    iconWrapper.appendChild(svg);
+
+    const title = document.createElement('div');
+    title.className = 'service-name';
+    title.textContent = scheme.name[lang];
+
+    const desc = document.createElement('div');
+    desc.className = 'service-desc';
+    desc.textContent = scheme.desc[lang];
+
+    const eligibility = document.createElement('div');
+    eligibility.className = 'scheme-meta';
+    const eligibilityStrong = document.createElement('strong');
+    eligibilityStrong.textContent = translations[lang].eligibilityLabel;
+    eligibility.appendChild(eligibilityStrong);
+    eligibility.appendChild(document.createTextNode(` ${scheme.eligibility[lang]}`));
+
+    const benefit = document.createElement('div');
+    benefit.className = 'scheme-meta';
+    const benefitStrong = document.createElement('strong');
+    benefitStrong.textContent = translations[lang].benefitLabel;
+    benefit.appendChild(benefitStrong);
+    benefit.appendChild(document.createTextNode(` ${scheme.benefit[lang]}`));
+
+    button.appendChild(iconWrapper);
+    button.appendChild(title);
+    button.appendChild(desc);
+    button.appendChild(eligibility);
+    button.appendChild(benefit);
+    return button;
+}
+
+function persistComplaints() {
+    try {
+        localStorage.setItem('sb_complaints', JSON.stringify(state.complaints));
+    } catch (error) {
+        console.warn('Unable to persist complaints to localStorage.', error);
+    }
+}
+
+function loadPersistedComplaints() {
+    try {
+        const data = localStorage.getItem('sb_complaints');
+        if (!data) return;
+        const parsed = JSON.parse(data);
+        if (Array.isArray(parsed)) {
+            state.complaints = parsed;
+        }
+    } catch (error) {
+        console.warn('Unable to read persisted complaints from localStorage.', error);
+    }
 }
 
 /* ==========================================================================
@@ -509,7 +650,7 @@ const schemesList = [
             gu: "ઊંચો વ્યાજ દર (અંદાજે ૮.૨%) અને 80C હેઠળ આવકવેરા મુક્તિ."
         },
         checkMatch: (age, gender, profession, income) => {
-            return gender === 'female';
+            return gender === 'female' && age <= 10;
         }
     },
     {
@@ -1232,15 +1373,7 @@ ${details}
    SECTION 8: APPLICATION INITIALIZATION & EVENT LISTENERS
    ========================================================================== */
 document.addEventListener("DOMContentLoaded", () => {
-    // Load local storage complaints if they exist
-    const savedComplaints = localStorage.getItem("sb_complaints");
-    if (savedComplaints) {
-        try {
-            state.complaints = JSON.parse(savedComplaints);
-        } catch (e) {
-            console.error("Could not load complaints from localStorage", e);
-        }
-    }
+    loadPersistedComplaints();
 
     // Set Initial Theme
     const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -1361,6 +1494,36 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("scheme-matcher-form").addEventListener("submit", (e) => {
         e.preventDefault();
         matchGovernmentSchemes();
+    });
+
+    // Attach service finder button handlers without inline event wiring
+    const serviceBindings = {
+        "srv-aadhaar": "aadhaar",
+        "srv-grievance": "grievance",
+        "srv-consumer": "consumer",
+        "srv-certificate": "certificate"
+    };
+
+    Object.entries(serviceBindings).forEach(([elementId, serviceType]) => {
+        const serviceButton = document.getElementById(elementId);
+        if (serviceButton) {
+            serviceButton.addEventListener("click", () => triggerServiceInfo(serviceType));
+        }
+    });
+
+    // Attach checklist tabs without inline event wiring
+    const checklistTabs = [
+        ["chk-tab-aadhaar", "aadhaar"],
+        ["chk-tab-passport", "passport"],
+        ["chk-tab-birth", "birth"],
+        ["chk-tab-pan", "pan"]
+    ];
+
+    checklistTabs.forEach(([tabId, tabName]) => {
+        const tabButton = document.getElementById(tabId);
+        if (tabButton) {
+            tabButton.addEventListener("click", () => setChecklistTab(tabName));
+        }
     });
 
     // Intersection Observer for Scroll Reveal animations
@@ -1626,8 +1789,20 @@ function fillAssistantInput(text, keyword) {
 
 // Handle query input submit
 function handleChatInput() {
-    const query = document.getElementById("chat-query").value.trim().toLowerCase();
+    if (!checkRateLimit()) return;
+
+    const rawQuery = document.getElementById("chat-query").value;
+    const query = rawQuery.trim().toLowerCase();
     if (!query) return;
+
+    // Validate chat query for security constraints
+    const queryValidation = validateInput(query, 2, 500);
+    if (!queryValidation.valid) {
+        if (queryValidation.reason === 'malicious') {
+            alert(state.language === 'hi' ? "सुरक्षा चेतावनी: अमान्य इनपुट" : state.language === 'gu' ? "સુરક્ષા ચેતવણી: અમાન્ય ઇનપુટ" : "Security Warning: Malicious input block.");
+            return;
+        }
+    }
 
     let keyword = "general";
     if (query.includes("aadhaar") || query.includes("aadhar") || query.includes("uidai") || query.includes("आधार")) {
@@ -1664,13 +1839,12 @@ function triggerAIAnswer(keyword) {
     const answerContent = document.getElementById("ai-answer-content");
 
     // Display typing indicator first
-    answerContent.innerHTML = `
-        <div class="typing-indicator">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    `;
+    answerContent.innerHTML = '';
+    const typing = document.createElement('div');
+    typing.className = 'typing-indicator';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+    answerContent.appendChild(typing);
+
     answerContainer.classList.add("active");
     answerContainer.dataset.keyword = keyword;
 
@@ -1683,7 +1857,11 @@ function triggerAIAnswer(keyword) {
                              ? aiKeywords[keyword][lang] 
                              : aiKeywords["general"][lang];
 
-        answerContent.innerHTML = `<div class="fade-in">${htmlResponse}</div>`;
+        answerContent.innerHTML = '';
+        const responseWrapper = document.createElement('div');
+        responseWrapper.className = 'fade-in';
+        responseWrapper.innerHTML = htmlResponse;
+        answerContent.appendChild(responseWrapper);
         
         // Re-scroll to ensure content is fully displayed
         setTimeout(() => {
@@ -1740,10 +1918,19 @@ function renderChecklist() {
     items.forEach((item, idx) => {
         const li = document.createElement("li");
         li.className = "checklist-item";
-        li.innerHTML = `
-            <input type="checkbox" id="chk-${tab}-${idx}" class="checklist-checkbox">
-            <label for="chk-${tab}-${idx}" class="checklist-text">${item}</label>
-        `;
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = `chk-${tab}-${idx}`;
+        checkbox.className = "checklist-checkbox";
+
+        const labelEl = document.createElement("label");
+        labelEl.htmlFor = checkbox.id;
+        labelEl.className = "checklist-text";
+        labelEl.textContent = item;
+
+        li.appendChild(checkbox);
+        li.appendChild(labelEl);
         listContainer.appendChild(li);
     });
 }
@@ -1752,6 +1939,8 @@ function renderChecklist() {
    SECTION 12: COMPLAINT DRAFTING FLOW
    ========================================================================== */
 function generateDraft() {
+    if (!checkRateLimit()) return;
+
     const category = document.getElementById("issue-category").value;
     const location = document.getElementById("location-input").value.trim();
     const details = document.getElementById("details-input").value.trim();
@@ -1762,6 +1951,23 @@ function generateDraft() {
             : state.language === 'gu' 
             ? "કૃપા કરીને સરનામું અને સમસ્યાની વિગત ભરો." 
             : "Please fill in both the location and the issue details.");
+        return;
+    }
+
+    // Input Validation Checks
+    const locationValidation = validateInput(location, 5, 120);
+    const detailsValidation = validateInput(details, 5, 1000);
+    if (!locationValidation.valid || !detailsValidation.valid) {
+        const reason = !locationValidation.valid ? locationValidation.reason : detailsValidation.reason;
+        if (reason === 'too_short') {
+            alert(state.language === 'hi' ? "पता या विवरण बहुत छोटा है (न्यूनतम 5 वर्ण)" : state.language === 'gu' ? "સરનામું અથવા વિગત ખૂબ ટૂંકી છે (ન્યૂનતમ 5 અક્ષર)" : "Location or details are too short (minimum 5 characters).");
+        } else if (reason === 'too_long') {
+            alert(state.language === 'hi' ? "पता या विवरण बहुत लंबा है" : state.language === 'gu' ? "સરનામું અથવા વિગત ખૂબ લાંબી છે" : "Location or details are too long.");
+        } else if (reason === 'malicious') {
+            alert(state.language === 'hi' ? "सुरक्षा चेतावनी: अमान्य स्क्रिप्ट इनपुट अस्वीकृत" : state.language === 'gu' ? "સુરક્ષા ચેતવણી: અમાન્ય સ્ક્રિપ્ટ ઇનપુટ નકારવામાં આવ્યું" : "Security warning: malicious script inputs are rejected.");
+        } else if (reason === 'only_symbols') {
+            alert(state.language === 'hi' ? "इनपुट में कम से कम एक अक्षर होना चाहिए" : state.language === 'gu' ? "ઇનપુટમાં ઓછામાં ઓછો એક અક્ષર હોવો જોઈએ" : "Input must contain at least one alphanumeric character.");
+        }
         return;
     }
 
@@ -1830,13 +2036,25 @@ function handleTrackerSearch(shouldScroll = true) {
         if (step.active) stepClass += " active";
         
         div.className = stepClass;
-        div.innerHTML = `
-            <div class="timeline-node"></div>
-            <div class="timeline-content">
-                <div class="timeline-status">${statusMap[step.status]}</div>
-                <div class="timeline-desc">${step.desc} ${step.date ? `(${step.date})` : ""}</div>
-            </div>
-        `;
+
+        const node = document.createElement("div");
+        node.className = "timeline-node";
+
+        const content = document.createElement("div");
+        content.className = "timeline-content";
+
+        const statusEl = document.createElement("div");
+        statusEl.className = "timeline-status";
+        statusEl.textContent = statusMap[step.status];
+
+        const descEl = document.createElement("div");
+        descEl.className = "timeline-desc";
+        descEl.textContent = step.desc + (step.date ? ` (${step.date})` : "");
+
+        content.appendChild(statusEl);
+        content.appendChild(descEl);
+        div.appendChild(node);
+        div.appendChild(content);
         timelineContainer.appendChild(div);
     });
 
@@ -1846,8 +2064,9 @@ function handleTrackerSearch(shouldScroll = true) {
     }
 }
 
-// Register a new mock complaint and auto-track it
 function registerAndTrackComplaint() {
+    if (!checkRateLimit()) return;
+
     const category = document.getElementById("issue-category").value;
     const rawLocation = document.getElementById("location-input").value.trim();
     const rawDetails = document.getElementById("details-input").value.trim();
@@ -1858,6 +2077,23 @@ function registerAndTrackComplaint() {
             : state.language === 'gu' 
             ? "ફરિયાદ નોંધવા માટે વિગત અને સરનામું જરૂરી છે." 
             : "Location and details are required to register a complaint.");
+        return;
+    }
+
+    // Input Validation Checks
+    const locationValidation = validateInput(rawLocation, 5, 120);
+    const detailsValidation = validateInput(rawDetails, 5, 1000);
+    if (!locationValidation.valid || !detailsValidation.valid) {
+        const reason = !locationValidation.valid ? locationValidation.reason : detailsValidation.reason;
+        if (reason === 'too_short') {
+            alert(state.language === 'hi' ? "पता या विवरण बहुत छोटा है (न्यूनतम 5 वर्ण)" : state.language === 'gu' ? "સરનામું અથવા વિગત ખૂબ ટૂંકી છે (ન્યૂનતમ 5 અક્ષર)" : "Location or details are too short (minimum 5 characters).");
+        } else if (reason === 'too_long') {
+            alert(state.language === 'hi' ? "पता या विवरण बहुत लंबा है" : state.language === 'gu' ? "સરનામું અથવા વિગત ખૂબ લાંબી છે" : "Location or details are too long.");
+        } else if (reason === 'malicious') {
+            alert(state.language === 'hi' ? "सुरक्षा चेतावनी: अमान्य स्क्रिप्ट इनपुट अस्वीकृत" : state.language === 'gu' ? "સુરક્ષા ચેતવણી: અમાન્ય સ્ક્રિપ્ટ ઇનપુટ નકારવામાં આવ્યું" : "Security warning: malicious script inputs are rejected.");
+        } else if (reason === 'only_symbols') {
+            alert(state.language === 'hi' ? "इनपुट में कम से कम एक अक्षर होना चाहिए" : state.language === 'gu' ? "ઇનપુટમાં ઓછામાં ઓછો એક અક્ષર હોવો જોઈએ" : "Input must contain at least one alphanumeric character.");
+        }
         return;
     }
 
@@ -1890,7 +2126,7 @@ function registerAndTrackComplaint() {
     };
 
     state.complaints.unshift(newComplaint); // Add to beginning of array
-    localStorage.setItem("sb_complaints", JSON.stringify(state.complaints));
+    persistComplaints();
 
     // Clear form inputs
     document.getElementById("location-input").value = "";
@@ -1937,12 +2173,12 @@ function renderRecentGrievances() {
    SECTION 14: GOVERNMENT SCHEMES MATCHER LOGIC
    ========================================================================== */
 function matchGovernmentSchemes() {
-    const age = parseInt(document.getElementById("match-age").value) || 35;
-    const gender = document.getElementById("match-gender").value;
-    const profession = document.getElementById("match-profession").value;
-    const income = parseFloat(document.getElementById("match-income").value) || 0;
+    const age = parseInt($("match-age").value, 10) || 35;
+    const gender = $("match-gender").value;
+    const profession = $("match-profession").value;
+    const income = parseFloat($("match-income").value) || 0;
 
-    const resultsContainer = document.getElementById("schemes-results-box");
+    const resultsContainer = $("schemes-results-box");
     if (!resultsContainer) return;
 
     resultsContainer.innerHTML = "";
@@ -1950,31 +2186,16 @@ function matchGovernmentSchemes() {
     const lang = state.language;
     const matched = schemesList.filter(s => s.checkMatch(age, gender, profession, income));
 
-    matched.forEach(scheme => {
-        const item = document.createElement("div");
-        item.className = "service-item";
-        item.style.cursor = "pointer";
-        item.addEventListener("click", () => {
-            // Fill chat text and query it
-            document.getElementById("chat-query").value = `${scheme.name[lang]}`;
-            triggerAIAnswer(scheme.id);
-        });
+    if (matched.length === 0) {
+        const noResult = document.createElement('div');
+        noResult.className = 'no-match-card';
+        noResult.textContent = translations[lang].noSchemeMatch || 'No matching schemes found for your profile.';
+        resultsContainer.appendChild(noResult);
+        return;
+    }
 
-        item.innerHTML = `
-            <div class="service-icon-wrapper" style="background-color: var(--accent-light); color: var(--accent);">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:1.25rem;height:1.25rem;">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            </div>
-            <div class="service-name">${scheme.name[lang]}</div>
-            <div class="service-desc" style="margin-bottom:0.75rem;">${scheme.desc[lang]}</div>
-            <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:auto;border-top:1px dashed var(--border-color);padding-top:0.5rem;">
-                <strong>${translations[lang].eligibilityLabel}</strong> ${scheme.eligibility[lang]}
-            </div>
-            <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.25rem;">
-                <strong>${translations[lang].benefitLabel}</strong> ${scheme.benefit[lang]}
-            </div>
-        `;
-        resultsContainer.appendChild(item);
+    matched.forEach(scheme => {
+        const card = createSchemeCard(scheme, lang);
+        resultsContainer.appendChild(card);
     });
 }
