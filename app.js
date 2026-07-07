@@ -1225,7 +1225,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateUIContent();
     renderChecklist();
     renderRecentGrievances();
-    handleTrackerSearch();
+    handleTrackerSearch(false);
     matchGovernmentSchemes();
 
     // Bind Controls
@@ -1250,10 +1250,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 generateDraft();
             }
         }
-        // Refresh tracker results if visible
+        // Refresh tracker results if visible without auto-scrolling
         const trackerResults = document.getElementById("tracker-results-panel");
         if (trackerResults.classList.contains("active")) {
-            handleTrackerSearch();
+            handleTrackerSearch(false);
         }
     });
 
@@ -1303,7 +1303,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("complaint-form").reset();
         document.getElementById("draft-output-card").classList.remove("active");
         document.getElementById("tracker-id-input").value = "SB-2026-9042";
-        handleTrackerSearch();
+        handleTrackerSearch(false);
         
         // Reset Schemes Matcher
         document.getElementById("scheme-matcher-form").reset();
@@ -1364,6 +1364,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
         backToTopBtn.addEventListener("click", () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+
+    // Custom Aura Cursor Follower Logic
+    const cursor = document.getElementById("custom-cursor");
+    if (cursor) {
+        window.addEventListener("mousemove", (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+            if (cursor.style.opacity === "0") {
+                cursor.style.opacity = "1";
+            }
+        });
+
+        window.addEventListener("mouseleave", () => {
+            cursor.style.opacity = "0";
+        });
+
+        // Delegate mouseover hover states for interactive elements
+        const hoverables = "a, button, select, input, [type='checkbox'], .suggestion-chip, .service-item, .checklist-item label, .timeline-node";
+        document.body.addEventListener("mouseover", (e) => {
+            if (e.target.closest(hoverables)) {
+                cursor.classList.add("hovered");
+            } else {
+                cursor.classList.remove("hovered");
+            }
         });
     }
 });
@@ -1667,7 +1693,7 @@ function copyDraftText() {
 }
 
 // Complaint tracking search logic
-function handleTrackerSearch() {
+function handleTrackerSearch(shouldScroll = true) {
     const input = document.getElementById("tracker-id-input").value.trim();
     if (!input) return;
 
@@ -1718,7 +1744,9 @@ function handleTrackerSearch() {
     });
 
     resultPanel.classList.add("active");
-    resultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (shouldScroll) {
+        resultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
 }
 
 // Register a new mock complaint and auto-track it

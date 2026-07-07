@@ -1214,3 +1214,45 @@ a:hover {
         transform: translateY(0);
     }
 }
+
+/* Custom Aura Cursor Follower */
+.custom-cursor {
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--accent);
+    background-color: transparent;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                height 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.35s ease;
+    z-index: 9999;
+    opacity: 0;
+    box-shadow: 0 0 8px rgba(15, 118, 110, 0.2);
+}
+
+/* Custom Cursor States */
+.custom-cursor.hovered {
+    width: 32px;
+    height: 32px;
+    background-color: rgba(15, 118, 110, 0.15);
+    border-color: var(--accent);
+    box-shadow: 0 0 16px rgba(15, 118, 110, 0.4);
+}
+
+[data-theme="dark"] .custom-cursor.hovered {
+    background-color: rgba(45, 212, 191, 0.2);
+    border-color: #2dd4bf;
+    box-shadow: 0 0 16px rgba(45, 212, 191, 0.5);
+}
+
+/* Hide cursor follower on touch-only devices */
+@media (hover: none) {
+    .custom-cursor {
+        display: none;
+    }
+}
